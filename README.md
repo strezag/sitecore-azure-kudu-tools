@@ -9,7 +9,7 @@ Development considered experimental.  Open for contributions!
 
 # Installation
 ## PowerShell Gallery 
-
+[PowerShell Gallery](https://www.powershellgallery.com/packages/SitecoreAzureKuduTools/1.0.0)
 ```sh
-Install-Module SitecoreAzureKuduTools
+Install-Module -Name SitecoreAzureKuduTools
 ```
