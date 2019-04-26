@@ -5,7 +5,7 @@ A collection of commands to obtain information from Sitecore instances on Azure 
 Development considered experimental.  Open for contributions!
 
 
-[See the help doc](https://strezag.github.io/sitecore-azure-kudu-tools/#Get-SitecoreFileBackup) 
+[View Docs](https://strezag.github.io/sitecore-azure-kudu-tools/#Get-SitecoreFileBackup) 
 
 # Installation
 ## PowerShell Gallery 
