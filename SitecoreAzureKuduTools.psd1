@@ -116,7 +116,7 @@ PrivateData = @{
         Tags = @('Sitecore', 'Azure', 'PaaS', 'Kudu', 'Support')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://raw.githubusercontent.com/strezag/sitecore-azure-kudu-tools/master/License.txt'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/strezag/sitecore-azure-kudu-tools'
@@ -125,7 +125,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial 1.0.0 release.
+        ReleaseNotes = 'Initial 1.0.1 release.
         
         Includes three functions:
             > Get-SitecoreFileBackup
