@@ -1,15 +1,18 @@
-# Sitecore Azure Kudu Tools PowerShell Module
+# Sitecore Azure Kudu Tools PowerShell Module [![Inline docs](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)
+
+
+ 
 
 ![SAKT](https://repository-images.githubusercontent.com/181915830/893fe980-686a-11e9-8ae0-f453d3685f23)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 A collection of commands to obtain information from Sitecore instances on Azure PaaS via Kudu.
-Open for contributions!
+
+Open for contributions! [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 [View Docs](https://strezag.github.io/sitecore-azure-kudu-tools/#Get-SitecoreFileBackup)
 
-# Installation
+# Installation  [![Inline docs](https://img.shields.io/badge/Install-%F0%9F%91%8D%20-blue.svg)](https://img.shields.io/badge/Install-%F0%9F%91%8D%20-blue.svg)
 
 ## PowerShell Gallery
 
@@ -19,12 +22,13 @@ Open for contributions!
 Install-Module -Name SitecoreAzureKuduTools
 ```
 
-# Functions
+# Functions [![Inline docs](https://img.shields.io/badge/Usage-%F0%9F%A4%99-blue.svg)](https://img.shields.io/badge/Install-%F0%9F%A4%99-blue.svg)
+
 
 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
 				<div id="Get-SitecoreFileBackup" class="toggle_container check_list_selected" style="display: none;">
 					<div class="page-header">
-						<h2> Get-SitecoreFileBackup </h2>
+						<h2> Get-SitecoreFileBackup <img src="https://img.shields.io/badge/function-%E2%9C%94-blue.svg" alt="function-badge"></img> </h2> 
 						<p>Download full App Service file contents.</p>
 						<p>This function will download all files from in a given Resource.</p>
 					</div>
@@ -85,7 +89,7 @@ Install-Module -Name SitecoreAzureKuduTools
                         </div>
 				<div id="Get-SitecoreSupportPackage" class="toggle_container" style="display: block;">
 					<div class="page-header">
-						<h2> Get-SitecoreSupportPackage </h2>
+						<h2> Get-SitecoreSupportPackage <img src="https://img.shields.io/badge/function-%E2%9C%94-blue.svg" alt="function-badge"></img></h2>
 						<p>Remotely generate a Sitecore Support Package</p>
 						<p>This function will download and zip files defined for Sitecore Support Packages: <br>https://kb.sitecore.net/articles/406145<br>&gt; \App_Config\*<br>&gt; \Logs\*<br>&gt; eventlog.xml<br>&gt; Global.asax<br>&gt; license.xml<br>&gt; sitecore.version.xml<br>&gt; Web.config</p>
 					</div>
@@ -157,7 +161,7 @@ Install-Module -Name SitecoreAzureKuduTools
                     </div>
 				<div id="Invoke-SitecoreThumbprintValidation" class="toggle_container" style="display: none;">
 					<div class="page-header">
-						<h2> Invoke-SitecoreThumbprintValidation </h2>
+						<h2> Invoke-SitecoreThumbprintValidation <img src="https://img.shields.io/badge/function-%E2%9C%94-blue.svg" alt="function-badge"></img></h2>
 						<p>Verify Certificate Thumbprints across Sitecore Azure PaaS using Kudu</p>
 						<p>This function will download ConnectionStrings.config and AppSettings.config files from all App Services in a given <br>Resource Group, then display any certificate thumbprints discrepencies.</p>
 					</div>
@@ -212,7 +216,9 @@ Install-Module -Name SitecoreAzureKuduTools
 </div>
 		</div>
 
-# Contribute
+# Contribute [![contributions welcome](https://img.shields.io/badge/Contibutions-👩‍💻-blue.svg?style=flat)](https://github.com/dwyl/esta/issues) 
+
+
 ## Local Setup
 ##### 1 - Uninstall the PowerShell Gallery Module
 ```
