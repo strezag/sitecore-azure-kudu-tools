@@ -150,6 +150,7 @@ Install-Module -Name SitecoreAzureKuduTools
                                         <td class="visible-lg visible-md">Path</td>
 										<td class="visible-lg visible-md">false</td>
 										<td class="visible-lg">false</td>
+										<td class="visible-lg"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -264,15 +265,12 @@ Import-Module .\SitecoreAzureKuduTools.psd1
 
 
 ## Developing
-##### Branch Off
-``` 
-git checkout -b bugs/mmDDyy 
-```
+##### Assign yourself an issue from the project
+##### Fork the repo and submit a Pull Request when you're ready.
 
+### Tip
 #### Reloading 
 When making changes, use the following command to reload the module:
 ```
 Remove-Module SitecoreAzureKuduTools -Force | Clear-History | Import-Module SitecoreAzureKuduTools
 ```
-
-#### Create a Pull Request to master
