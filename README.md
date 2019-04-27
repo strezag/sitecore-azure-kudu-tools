@@ -211,3 +211,48 @@ Install-Module -Name SitecoreAzureKuduTools
 						</div>
 </div>
 		</div>
+
+# Contribute
+## Local Setup
+##### 1 - Uninstall the PowerShell Gallery Module
+```
+Remove-Module SitecoreAzureKuduTools -Force -ErrorAction SilentlyContinue
+Uninstall-Module SitecoreAzureKuduTools -Force -ErrorAction SilentlyContinue
+```
+
+##### 2 - Clone the repository 
+
+##### 3 - Open PowerShell as an Administrator
+
+##### 4 - Navigate to a PowerShell Environment Path: 
+```
+cd "$($Env:PSModulePath.split(';')[1])"
+```
+##### 5 - Create a new folder in your module path directory called: 'saktdev'
+``` 
+mkdir saktdev
+```
+##### 6- Create a new folder in your module path directory called: 'saktdev' and navigate to it
+```
+mkdir saktdev
+cd .\saktdev\
+```
+
+##### 7 - Create a new folder in your module path directory called: '1.0.1' and navigate to it
+```
+mkdir 1.0.1
+cd .\1.0.1
+```
+
+##### 8 - Copy contents of the repository to the .\saktdev\1.0.1\ directory
+```
+robocopy "C:\gitcode\sitecore-azure-kudu-tools\" "$(Get-Location)"
+```
+
+ ##### 9 - Import the module
+
+```
+Import-Module .\SitecoreAzureKuduTools.psd1
+```
+
+##### 10 - Verify functions are loading 
