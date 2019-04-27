@@ -23,17 +23,33 @@ function Get-SitecoreFileBackup {
         [string]$ResourceGroupName,
         [Parameter(Mandatory = $true)]
         [Alias("Name")]
-        [string]$ResourceName   
+        [string]$ResourceName,
+        [Parameter(Mandatory = $false)]
+        [Alias("Path")]
+        [string]$DestinationPath
     )
     
-    Write-Host "`n******************************************`n  Sitecore File Backup `n******************************************`n" -ForegroundColor Blue
-    Login-AzureRmAccount -SubscriptionName $ResourceSubscriptionId -ErrorAction Stop -Verbose
-    
+    Write-Host "`n***********************************************`n          Sitecore Azure Kudu Tools            `n***********************************************" -ForegroundColor Black -BackgroundColor DarkCyan
+    Write-Host "***********************************************`n        Sitecore AppService File Backup        `n***********************************************`n" -ForegroundColor Black -BackgroundColor Green
+
+    Login-AzureRmAccount -SubscriptionName $ResourceSubscriptionId -ErrorAction Stop -Verbose > $null
     $Base64Auth = Get-AzureSubscriptionBase64Credentials -ResourceSubscriptionId $ResourceSubscriptionId -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName
-    $BaseFolderPath = Get-BaseDownloadFolderPath
+
+    if ($null -ne $DestinationPath -and $DestinationPath -ne '') {
+        if (Test-Path -Path $DestinationPath) {
+            $BaseFolderPath = $DestinationPath
+        }
+        else {
+            $BaseFolderPath = Get-BaseDownloadFolderPath
+        }
+    }
+    else {
+        $BaseFolderPath = Get-BaseDownloadFolderPath
+    }
+
     $BaseApiUrl = "https://$($ResourceName).scm.azurewebsites.net/api"
     $backupFolderName = "_$($ResourceName)_$((Get-Date).ToString('yyyyMMddhhmm'))" 
-    $outfilePath = "$baseFolderPath\SitecoreBackup"
+    $outfilePath = "$baseFolderPath\SAKT_SitecoreFileBackup"
     $BaseOutputPath = "$outfilePath\$backupFolderName"
     New-Item -Path $outfilePath -Name $backupFolderName -ItemType "directory" | Out-Null
 

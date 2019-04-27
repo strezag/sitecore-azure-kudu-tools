@@ -32,21 +32,38 @@ function Get-SitecoreSupportPackage {
         [Parameter(Mandatory = $true)]
         [Alias("Name")]
         [string]$ResourceName,
+        [Parameter(Mandatory = $false)]
+        [Alias("Path")]
+        [string]$DestinationPath,
         [Parameter(Mandatory = $true)]
         [Alias("LogDays")]
         [int]$LogDaysBack
     )
 
-    Write-Host "`n******************************************`n  Sitecore Package Generator`n******************************************`n" -ForegroundColor Blue
-    Login-AzureRmAccount -SubscriptionName $ResourceSubscriptionId -ErrorAction Stop -Verbose
+    Write-Host "`n***********************************************`n          Sitecore Azure Kudu Tools            `n***********************************************" -ForegroundColor Black -BackgroundColor DarkCyan
+    Write-Host "***********************************************`n     Sitecore Support Package Generator        `n***********************************************`n" -ForegroundColor Black -BackgroundColor Green
+    
+    Login-AzureRmAccount -SubscriptionName $ResourceSubscriptionId -ErrorAction Stop -Verbose > $null
     $Base64Auth = Get-AzureSubscriptionBase64Credentials -ResourceSubscriptionId $ResourceSubscriptionId -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName
-    $BaseFolderPath = Get-BaseDownloadFolderPath
+    
+    if ($null -ne $DestinationPath -and $DestinationPath -ne '') {
+        if (Test-Path -Path $DestinationPath) {
+            $BaseFolderPath = $DestinationPath
+        }
+        else {
+            $BaseFolderPath = Get-BaseDownloadFolderPath
+        }
+    }
+    else {
+        $BaseFolderPath = Get-BaseDownloadFolderPath
+    }
+
     $BaseApiUrl = "https://$($ResourceName).scm.azurewebsites.net/api"
     $SupportPackageName = "scsupport_$($ResourceName)_$((Get-Date).ToString('yyyyMMddhhmm'))" 
-    $OutFilePath = "$BaseFolderPath\SKPT-SitecoreSupportPackages"
+    $OutFilePath = "$BaseFolderPath\SAKT_SitecoreSupportPackage"
     $BaseOutputPath = "$OutFilePath\$SupportPackageName"
  
-    Write-Host "`n*** PowerShell SSPG Running...  ***" -ForegroundColor Blue
+    Write-Host "`n*** Running...  ***" -ForegroundColor Blue
 
     <#### LOGS ####>
     $logDir = New-Item -Path $BaseOutputPath -Name "Logs" -ItemType "directory"
@@ -203,7 +220,8 @@ function Get-SitecoreSupportPackage {
     try {
         Write-Host " > Cleaning up..." -ForegroundColor DarkGray -NoNewline
         Get-ChildItem -Path "$BaseOutputPath\" -File -Recurse | Remove-Item
-        Get-ChildItem -Path "$OutFilePath\" -Directory -Recurse | Remove-Item -Recurse -Force
+        Get-ChildItem -Path "$OutFilePath\" -Directory -Recurse | Remove-Item -Recurse
+        Get-ChildItem -Path "$BaseFolderPath\" -Directory | Where-Object { $_.Name -eq "SAKT_SitecoreSupportPackage"} | Remove-Item
         Write-Host " OK `n " -ForegroundColor Green
     }
     catch {
@@ -211,6 +229,6 @@ function Get-SitecoreSupportPackage {
         Write-Host "  > $($_.Exception.Message)`n" -ForegroundColor Red
     }
     
-    Write-Host "Sitecore Support Package for $ResourceName generated:`n >> $BaseOutputPath `n" -ForegroundColor Green
+    Write-Host "Sitecore Support Package for $ResourceName generated:`n >> $BaseFolderPath\$SupportPackageZipName `n" -ForegroundColor Green
 
 }

@@ -243,3 +243,18 @@ Import-Module .\SitecoreAzureKuduTools.psd1
 ```
 
 ##### 7 - Verify functions are loading 
+
+
+## Developing
+##### Branch Off
+``` 
+git checkout -b bugs/mmDDyy 
+```
+
+#### Reloading 
+When making changes, use the following command to reload the module:
+```
+Remove-Module SitecoreAzureKuduTools -Force | Clear-History | Import-Module SitecoreAzureKuduTools
+```
+
+#### Create a Pull Request to master

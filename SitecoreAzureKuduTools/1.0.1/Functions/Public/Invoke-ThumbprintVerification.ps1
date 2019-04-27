@@ -18,17 +18,32 @@ function Invoke-SitecoreThumbprintValidation {
         [Parameter(Mandatory = $true)]
         [Alias("ID")]
         [string]$ResourceSubscriptionId,
-
         [Parameter(Mandatory = $true)]
         [Alias("Group")]
-        [string]$ResourceGroupName
+        [string]$ResourceGroupName,
+        [Parameter(Mandatory = $false)]
+        [Alias("Path")]
+        [string]$DestinationPath
 
     )
-    Write-Host "`n***********************************************`n  Thumbprint Verification `n***********************************************`n" -ForegroundColor Blue
-    Login-AzureRmAccount -SubscriptionName $ResourceSubscriptionId -ErrorAction Stop -Verbose
-    $BaseFolderPath = Get-BaseDownloadFolderPath
-    Get-FilesFromAzure -ResourceSubscriptionId $ResourceSubscriptionId -ResourceGroupName $ResourceGroupName -OutputPath $baseFolderPath
+    Write-Host "`n***********************************************`n          Sitecore Azure Kudu Tools            `n***********************************************" -ForegroundColor Black -BackgroundColor DarkCyan
+    Write-Host "***********************************************`n    Verify Sitecore Certificate Thumbprints    `n***********************************************`n" -ForegroundColor Black -BackgroundColor Green
+    
+    Login-AzureRmAccount -SubscriptionName $ResourceSubscriptionId -ErrorAction Stop -Verbose > $null
 
+    if ($null -ne $DestinationPath -and $DestinationPath -ne '') {
+        if (Test-Path -Path $DestinationPath) {
+            $BaseFolderPath = $DestinationPath
+        }
+        else {
+            $BaseFolderPath = Get-BaseDownloadFolderPath
+        }
+    }
+    else {
+        $BaseFolderPath = Get-BaseDownloadFolderPath
+    }
+
+    Get-FilesFromAzure -ResourceSubscriptionId $ResourceSubscriptionId -ResourceGroupName $ResourceGroupName -OutputPath $BaseFolderPath
 }
 
 function Get-FilesFromAzure {
@@ -50,14 +65,9 @@ function Get-FilesFromAzure {
     
     foreach ($app in $apps) {
         $base64AuthInfo = Get-AzureSubscriptionBase64Credentials -ResourceSubscriptionId $ResourceSubscriptionId -ResourceGroupName $ResourceGroupName -ResourceName "$($ResourcePrefixName)-$($app)"
-        # $publishingCredentials = "$($ResourcePrefixName)-$($app)/publishingcredentials"
-        # $creds = Invoke-AzureRmResourceAction -ResourceGroupName $ResourceGroupName -ResourceType Microsoft.Web/sites/config -ResourceName $publishingCredentials -Action list -ApiVersion 2015-08-01 -Force -ErrorAction Stop
-        # $username = $creds.Properties.PublishingUserName
-        # $password = $creds.Properties.PublishingPassword
-        # $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))   
         $apiBaseUrl = "https://$($ResourcePrefixName)-$app.scm.azurewebsites.net/api"
         $supportPackageName = "$($ResourcePrefixName)-$($app)_$((Get-Date).ToString('yyyyMMddhhmm'))" 
-        $outfileRootPath = "$OutputPath\AzurePaaS_Thumbprints"
+        $outfileRootPath = "$OutputPath\SAKT_ThumbprintVerification"
         If (!(Test-Path $outfileRootPath)) {
             New-Item -ItemType Directory -Force -Path $outfileRootPath | Out-Null
         }
@@ -72,7 +82,7 @@ function Get-FilesFromAzure {
         New-Item -Path $outTempPath -Name $supportPackageName -ItemType "directory" -Force | Out-Null
 
         Write-Host "`n[" -NoNewline
-        Write-Host "Certificate Thumbprint Verification" -ForegroundColor Blue -NoNewline
+        Write-Host "Certificate Thumbprint Verification" -ForegroundColor Black -BackgroundColor DarkCyan -NoNewline
         Write-Host "]: " -NoNewline
 
 
@@ -100,7 +110,7 @@ function Receive-AppServiceContents {
         
     )
     Write-Host "[" -NoNewline
-    Write-Host "Certificate Thumbprint Verification" -ForegroundColor Blue -NoNewline
+    Write-Host "Certificate Thumbprint Verification" -ForegroundColor Black -BackgroundColor DarkCyan -NoNewline
     Write-Host "]: " -NoNewline
 
     Write-Host "API URL: " -NoNewline
@@ -144,7 +154,7 @@ function Get-NestedFolderFiles {
         }
         else {
             Write-Host "[" -NoNewline
-            Write-Host "Certificate Thumbprint Verification" -ForegroundColor Blue -NoNewline
+            Write-Host "Certificate Thumbprint Verification" -ForegroundColor Black -BackgroundColor DarkCyan -NoNewline
             Write-Host "]: " -NoNewline
 
             Write-Host "Download: " -NoNewline
@@ -161,8 +171,6 @@ function Confirm-MatchingThumbprintValues {
         [Parameter(Mandatory = $true)]
         [string]$FileDirectoryPath
     )
-    Write-Host "`n*********************************************************************`n" -ForegroundColor Blue
-
     
     $count = 0
     $cNameStringsWithThumbprint = "xconnect.collection.certificate|xdb.marketingautomation.operations.client.certificate|xdb.marketingautomation.reporting.client.certificate|xdb.referencedata.client.certificate"
