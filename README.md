@@ -225,37 +225,21 @@ Uninstall-Module SitecoreAzureKuduTools -Force -ErrorAction SilentlyContinue
 
 ##### 2 - Clone the repository 
 
-##### 3 - Open PowerShell as an Administrator
+##### 3 - Open PowerShell as an Administrator and navigate to the root of the cloned repo. 
 
-##### 4 - Navigate to a PowerShell Environment Path: 
+##### 4 - Add cloned repo path to PSModulePath environment variable. 
 ```
-cd "$($Env:PSModulePath.split(';')[1])"
-```
-##### 5 - Create a new folder in your module path directory called: 'saktdev'
-``` 
-mkdir saktdev
-```
-##### 6- Create a new folder in your module path directory called: 'saktdev' and navigate to it
-```
-mkdir saktdev
-cd .\saktdev\
+[Environment]::SetEnvironmentVariable("PSModulePath", [Environment]::GetEnvironmentVariable("PSModulePath", "Machine") + ";$($(Get-Location).Path)", "Machine")
 ```
 
-##### 7 - Create a new folder in your module path directory called: '1.0.1' and navigate to it
+##### 5 - Navigate to \SitecoreAzureKuduTools\1.0.1
 ```
-mkdir 1.0.1
-cd .\1.0.1
-```
-
-##### 8 - Copy contents of the repository to the .\saktdev\1.0.1\ directory
-```
-robocopy "C:\gitcode\sitecore-azure-kudu-tools\" "$(Get-Location)"
+cd .\SitecoreAzureKuduTools\1.0.1\
 ```
 
- ##### 9 - Import the module
-
+ ##### 6 - Import the module
 ```
 Import-Module .\SitecoreAzureKuduTools.psd1
 ```
 
-##### 10 - Verify functions are loading 
+##### 7 - Verify functions are loading 
