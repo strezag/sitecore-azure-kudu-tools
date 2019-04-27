@@ -12,7 +12,7 @@
 RootModule = 'SitecoreAzureKuduTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.1'
+ModuleVersion = '1.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -125,12 +125,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial 1.0.1 release.
+        ReleaseNotes = 'Initial 1.0.2 release.
         
-        Includes three functions:
-            > Get-SitecoreFileBackup
-            > Get-SitecoreSupportPackage
-            > Invoke-SitecoreThumbprintValidation
+        > Resolved  bugs
         '
 
     } # End of PSData hashtable

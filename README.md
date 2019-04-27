@@ -1,4 +1,4 @@
-# Sitecore Azure Kudu Tools PowerShell Module [![Inline docs](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)](#)
+# Sitecore Azure Kudu Tools PowerShell Module [![Inline docs](https://img.shields.io/badge/Version-1.0.2-brightgreen.svg)](#)
 
 ![SAKT](https://repository-images.githubusercontent.com/181915830/893fe980-686a-11e9-8ae0-f453d3685f23)
 
@@ -13,7 +13,7 @@ Open for contributions! [![contributions welcome](https://img.shields.io/badge/c
 
 ## PowerShell Gallery
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/SitecoreAzureKuduTools/1.0.1)
+[PowerShell Gallery](https://www.powershellgallery.com/packages/SitecoreAzureKuduTools/1.0.2)
 
 ```sh
 Install-Module -Name SitecoreAzureKuduTools
@@ -250,9 +250,9 @@ Uninstall-Module SitecoreAzureKuduTools -Force -ErrorAction SilentlyContinue
 [Environment]::SetEnvironmentVariable("PSModulePath", [Environment]::GetEnvironmentVariable("PSModulePath", "Machine") + ";$($(Get-Location).Path)", "Machine")
 ```
 
-##### 5 - Navigate to \SitecoreAzureKuduTools\1.0.1
+##### 5 - Navigate to \SitecoreAzureKuduTools\1.0.2
 ```
-cd .\SitecoreAzureKuduTools\1.0.1\
+cd .\SitecoreAzureKuduTools\1.0.2\
 ```
 
  ##### 6 - Import the module
