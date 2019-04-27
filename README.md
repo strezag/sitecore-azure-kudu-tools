@@ -1,18 +1,15 @@
-# Sitecore Azure Kudu Tools PowerShell Module [![Inline docs](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)
-
-
- 
+# Sitecore Azure Kudu Tools PowerShell Module [![Inline docs](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)](#)
 
 ![SAKT](https://repository-images.githubusercontent.com/181915830/893fe980-686a-11e9-8ae0-f453d3685f23)
 
 
 A collection of commands to obtain information from Sitecore instances on Azure PaaS via Kudu.
 
-Open for contributions! [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+Open for contributions! [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/strezag/sitecore-azure-kudu-tools/issues)
 
 [View Docs](https://strezag.github.io/sitecore-azure-kudu-tools/#Get-SitecoreFileBackup)
 
-# Installation  [![Inline docs](https://img.shields.io/badge/Install-%F0%9F%91%8D%20-blue.svg)](https://img.shields.io/badge/Install-%F0%9F%91%8D%20-blue.svg)
+# Installation  [![Inline docs](https://img.shields.io/badge/Install-%F0%9F%91%8D%20-blue.svg)](#)
 
 ## PowerShell Gallery
 
@@ -22,7 +19,7 @@ Open for contributions! [![contributions welcome](https://img.shields.io/badge/c
 Install-Module -Name SitecoreAzureKuduTools
 ```
 
-# Functions [![Inline docs](https://img.shields.io/badge/Usage-%F0%9F%A4%99-blue.svg)](https://img.shields.io/badge/Install-%F0%9F%A4%99-blue.svg)
+# Functions [![Inline docs](https://img.shields.io/badge/Usage-%F0%9F%A4%99-blue.svg)](#)
 
 
 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
@@ -216,7 +213,7 @@ Install-Module -Name SitecoreAzureKuduTools
 </div>
 		</div>
 
-# Contribute [![contributions welcome](https://img.shields.io/badge/Contibutions-👩‍💻-blue.svg?style=flat)](https://github.com/dwyl/esta/issues) 
+# Contribute [![contributions welcome](https://img.shields.io/badge/Contibutions-👩‍💻-blue.svg?style=flat)](https://github.com/strezag/sitecore-azure-kudu-tools/issues) 
 
 
 ## Local Setup
