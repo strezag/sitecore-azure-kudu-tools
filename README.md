@@ -67,6 +67,12 @@ Install-Module -Name SitecoreAzureKuduTools
 										<td class="visible-lg visible-md">true</td>
 										<td class="visible-lg">false</td>
 									</tr>
+									<tr>
+										<td><nobr>-DestinationPath</nobr></td>
+                                        <td class="visible-lg visible-md">Path</td>
+										<td class="visible-lg visible-md">false</td>
+										<td class="visible-lg">false</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>				
@@ -139,6 +145,12 @@ Install-Module -Name SitecoreAzureKuduTools
 										<td class="visible-lg">false</td>
 										<td class="visible-lg">0</td>
 									</tr>
+									<tr>
+										<td><nobr>-DestinationPath</nobr></td>
+                                        <td class="visible-lg visible-md">Path</td>
+										<td class="visible-lg visible-md">false</td>
+										<td class="visible-lg">false</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>				
@@ -194,6 +206,12 @@ Install-Module -Name SitecoreAzureKuduTools
 										<td class="visible-lg visible-md">true</td>
 										<td class="visible-lg">false</td>
                   </tr>
+				  <tr>
+										<td><nobr>-DestinationPath</nobr></td>
+                                        <td class="visible-lg visible-md">Path</td>
+										<td class="visible-lg visible-md">false</td>
+										<td class="visible-lg">false</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>				
